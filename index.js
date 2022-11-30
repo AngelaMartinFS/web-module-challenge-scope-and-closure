@@ -29,12 +29,20 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   
   Study the code for counter1 and counter2, then answer the questions below.
   
-  1. What is the difference between counter1 and counter2?
+  1. What is the difference between counter1 and counter2? 
   
-  2. Which of the two uses a closure? How can you tell?
+  Counter1 is a const indicating a consistent function that returns 0, when multiple consts are added the value of zero is held in each const. Returning in numerical sequence in par to the amount of console.logs for each seperate const.
+  
+  2. Which of the two uses a closure? How can you tell? 
+  
+  Counter1 contains a closure with a return function within the parent function.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+     Counter1 code would preferably be use in instances where multiple values require counting at a separate rate, for example : two different hockey team scores.
+
+     Counter2 code would be used for a single value that takes in mulitple counters.
 */
 
 // counter1 code
@@ -64,8 +72,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  return Math.floor(Math.random() * Math.floor(3));
 }
 
 
@@ -83,10 +91,19 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
-}
+function finalScore(inningCB, innings){
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0 ; i > innings ; i++){
+    homeScore = homeScore + inningCB();
+    awayScore = awayScore + inningCB();
+  }
+    return{
 
+ Home: homeScore,
+Away: awayScore
+  }
+}
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -101,8 +118,11 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningCB) {
+return {
+  Home: inningCB (),
+  Away: inningCB ()
+}
 
 }
 
